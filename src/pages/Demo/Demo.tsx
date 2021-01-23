@@ -3,7 +3,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { Box, Button, ButtonGroup, Grid, Paper } from "@material-ui/core";
 
-import { useCommonStyles, paperElevation } from "../../components/App/layout";
+import { useCommonStyles, paperElevation } from "../../components/Layout/styles";
 
 type DemoProps = {};
 
@@ -12,7 +12,7 @@ const Demo: React.FC<DemoProps> = ({}) => {
 
   return (
     <>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} className={cstyles.defaultContentPadding}>
         <Grid item xs={12}>
           <Button variant="contained" color="default">
             default

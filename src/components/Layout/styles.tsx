@@ -3,10 +3,27 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const drawerWidth = 300;
 const drawerWidthCollapsed = 60;
+const appBarHeight = 64;
+
+export const paperElevation = 3
+
+export const useCommonStyles = makeStyles((theme) => ({
+  basicPaper: {
+    padding: "1rem"
+  },
+  defaultContentPadding:{
+    padding: theme.spacing(3),
+  }
+}));
+
+export const useMapStyles = makeStyles((theme) => ({
+  mapContainer: {
+    height: `calc(100vh - ${appBarHeight}px)`
+  },
+}));
 
 
-
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
@@ -17,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    // height: 100,
+    height: appBarHeight,
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -59,13 +76,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
+    height: appBarHeight,
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
-}));
 
-export { useStyles }
+}));
