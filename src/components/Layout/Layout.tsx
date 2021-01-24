@@ -6,38 +6,30 @@ import {
 } from "react-router-dom"
 
 import clsx from "clsx"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
+import AppBar from "../AppBar"
 import List from "@material-ui/core/List"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Divider from "@material-ui/core/Divider"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 
 
 import { useStyles } from "./styles"
-import { Container, Typography } from "@material-ui/core"
+import { appTitle } from  "../App/config"
+import { Page } from "../App/pages"
 
-interface Page {
-  text: string
-  route: string
-  component: any,
-  icon: any
-}
-
-interface DrawerProps {
+type DrawerProps = {
   pages: Page[]
 }
 
 export default function CollapsableDrawerLayout(props: DrawerProps) {
-  const classes = useStyles()
-  localStorage.setItem("theme", "light")
   const theme = useTheme()
+  const classes = useStyles(theme)
+
+  localStorage.setItem("theme", "light")
   const [drawerOpen, setDrawerOpen] = React.useState(localStorage.getItem('drawerOpen') === 'false' ? false : true)
 
   const handleDrawerToggle = () => {
@@ -49,29 +41,7 @@ export default function CollapsableDrawerLayout(props: DrawerProps) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: drawerOpen,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-            edge="start"
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Container maxWidth="sm">
-            <Typography variant="h6" noWrap align="center">
-              Mini variant drawer
-            </Typography>
-          </Container>
-        </Toolbar>
-      </AppBar>
+      <AppBar drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} title={appTitle} />
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {

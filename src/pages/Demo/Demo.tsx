@@ -12,7 +12,7 @@ const Demo: React.FC<DemoProps> = ({}) => {
 
   return (
     <>
-      <Grid container spacing={1} className={cstyles.defaultContentPadding}>
+      <Grid container spacing={3} >
         <Grid item xs={12}>
           <Button variant="contained" color="default">
             default
@@ -74,7 +74,6 @@ const Demo: React.FC<DemoProps> = ({}) => {
         </Grid>
       </Grid>
 
-      <Box mt={2} p={2}></Box>
     </>
   );
 };

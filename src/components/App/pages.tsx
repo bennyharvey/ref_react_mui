@@ -7,7 +7,7 @@ import Users from '../../pages/Users'
 import Demo from '../../pages/Demo'
 import Map from '../../pages/Map'
 
-type Page = {
+export type Page = {
   text: string,
   route: string,
   component: any,

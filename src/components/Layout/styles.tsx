@@ -22,12 +22,10 @@ export const useMapStyles = makeStyles((theme) => ({
   },
 }));
 
-
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
+export const useAppBarStyles = makeStyles((theme) => ({
   appBar: {
+    // top: 'auto',
+    // bottom: 0,
     width: `calc(100% - ${drawerWidthCollapsed}px)`,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -47,6 +45,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: 36,
+  },
+}));
+
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
   },
   hide: {
     display: "none",
