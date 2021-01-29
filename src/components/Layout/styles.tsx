@@ -46,6 +46,10 @@ export const useAppBarStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: 36,
   },
+  mapMenuButton: {
+    // float: "right",
+    // marginRight: 36,
+  },
 }));
 
 export const useStyles = makeStyles((theme) => ({
@@ -75,6 +79,14 @@ export const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     width: drawerWidthCollapsed,
   },
+  mapDrawerClose: {
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
+    width: 0,
+  },
   toolbar: {
     display: "flex",
     alignItems: "center",
@@ -86,7 +98,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
-
+  defaultContentPadding: {
+    padding: theme.spacing(3),
+  }
 }));

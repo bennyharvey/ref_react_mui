@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+import TuneIcon from "@material-ui/icons/Tune"
 
 import { useAppBarStyles } from "../Layout/styles"
 import { Container, Typography } from "@material-ui/core"
@@ -12,12 +13,15 @@ import { Container, Typography } from "@material-ui/core"
 type AppBarProps = {
   handleDrawerToggle: () => void
   drawerOpen: boolean
-  title: string
+  handleMapDrawerToggle: () => void
+  mapDrawerOpen: boolean
+  title: string 
 }
 
 export default function MUIAppBar(props: AppBarProps) {
   const classes = useAppBarStyles()
   const handleDrawerToggle = props.handleDrawerToggle
+  const handleMapDrawerToggle = props.handleMapDrawerToggle
   const drawerOpen = props.drawerOpen
 
   return (
@@ -43,6 +47,15 @@ export default function MUIAppBar(props: AppBarProps) {
               {props.title}
             </Typography>
           </Container>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleMapDrawerToggle}
+            edge="end"
+            className={classes.mapMenuButton}
+          >
+            <TuneIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </>
