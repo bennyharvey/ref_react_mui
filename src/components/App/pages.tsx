@@ -2,6 +2,7 @@ import React from "react";
 
 import InboxIcon from "@material-ui/icons/MoveToInbox"
 import MailIcon from "@material-ui/icons/Mail"
+import MapIcon from "@material-ui/icons/Map"
 
 import Users from '../../pages/Users'
 import Demo from '../../pages/Demo'
@@ -32,7 +33,7 @@ pages = [
     text: "Map",
     route: '/map',
     component: <Map />,
-    icon: <MailIcon />
+    icon: <MapIcon />
   },
 ]
 
