@@ -5,6 +5,8 @@ import { Box, Button, ButtonGroup, Grid, Paper } from "@material-ui/core";
 
 import { useCommonStyles, paperElevation } from "../../components/Layout/styles";
 
+import LeafletMap from '../../components/LeafletMap'
+
 type DemoProps = {};
 
 const Demo: React.FC<DemoProps> = ({}) => {
@@ -52,6 +54,11 @@ const Demo: React.FC<DemoProps> = ({}) => {
         </Grid>
         <Grid item xs={3}>
           <Paper elevation={paperElevation} className={cstyles.basicPaper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper elevation={paperElevation} className={[cstyles.basicPaper].join(' ')}>
+          <LeafletMap mapContainer={cstyles.demoMap} zoom={18} />
+          </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper elevation={paperElevation} className={cstyles.basicPaper}>

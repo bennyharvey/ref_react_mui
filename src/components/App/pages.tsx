@@ -15,8 +15,7 @@ export type Page = {
   icon: any,
 }
 
-let pages: Page[]
-pages = [
+let pages: Page[] = [
   {
     text: "Users",
     route: '/users',
@@ -35,6 +34,12 @@ pages = [
     component: <Map />,
     icon: <MapIcon />
   },
+  {
+    text: "root",
+    route: "/",
+    component: 'root',
+    icon: ''
+  }
 ]
 
 export { pages }

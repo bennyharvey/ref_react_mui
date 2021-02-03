@@ -17,20 +17,19 @@ import { useStyles } from "./styles";
 import { appTitle } from "../App/config";
 import { Page } from "../App/pages";
 
-
 type BasicAction = {
-    type: string
-    param?: string
-}
+    type: string;
+    param?: string;
+};
 
 type LayoutState = {
-    count: number,
-    drawerOpen: boolean
-}
+    count: number;
+    drawerOpen: boolean;
+};
 
 const initialState = {
     count: 0,
-    drawerOpen: localStorage.getItem("drawerOpen") === "false" ? false : true
+    drawerOpen: localStorage.getItem("drawerOpen") === "false" ? false : true,
 };
 
 const reducer = (state: LayoutState, action: BasicAction) => {
@@ -43,17 +42,16 @@ const reducer = (state: LayoutState, action: BasicAction) => {
             localStorage.setItem("drawerOpen", (!state.drawerOpen).toString());
             switch (action.param) {
                 case "open":
-                    return { ...state, drawerOpen: state.drawerOpen = true };
+                    return { ...state, drawerOpen: (state.drawerOpen = true) };
                 case "close":
-                    return { ...state, drawerOpen: state.drawerOpen = false };
+                    return { ...state, drawerOpen: (state.drawerOpen = false) };
                 default:
-                    throw new Error('wrong param');
+                    throw new Error("wrong param");
             }
         default:
             throw new Error();
     }
 };
-
 
 type DrawerProps = {
     pages: Page[];
@@ -69,8 +67,8 @@ export default function CollapsableDrawerLayout(props: DrawerProps) {
     const [mapDrawerOpen, setMapDrawerOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
-        if (state.drawerOpen) dispatch({type: "setDrawerState", param: "close"});
-        else dispatch({type: "setDrawerState", param: "open"});
+        if (state.drawerOpen) dispatch({ type: "setDrawerState", param: "close" });
+        else dispatch({ type: "setDrawerState", param: "open" });
     };
 
     const handleMapDrawerToggle = () => {
@@ -120,17 +118,11 @@ export default function CollapsableDrawerLayout(props: DrawerProps) {
             >
                 <div className={classes.toolbar} />
                 <RouterSwitch>
-                    {props.pages.map((page, index) =>
-                        page.route !== "/" ? (
-                            <Route path={page.route} key={"route" + index}>
-                                {page.component}
-                            </Route>
-                        ) : (
-                            <Route exact path="/" key={"route" + index}>
-                                {page.component}
-                            </Route>
-                        )
-                    )}
+                    {props.pages.map((page, index) => (
+                        <Route exact={page.route === "/" ? true : false} path={page.route} key={"route" + index}>
+                            {page.component}
+                        </Route>
+                    ))}
                 </RouterSwitch>
             </main>
             {location.pathname === "/map" ? (
